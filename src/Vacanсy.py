@@ -5,18 +5,17 @@ class Vacancy:
     name: str  # Название вакансии
     url: str  # URL страницы вакансии
     salary: int  # Зарплата предложенная за работу
-    area: str
-    schedule: str  # требования по графику
-    snippet: str # обязанности
+    area: str # Город
+
     instances = []
 
     def __init__(self, name, url, salary, citi, exp):
         self.name = name
         self.url = url
         self.salary = salary
-        #self.salary_to = salary_to
         self.citi = citi
         self.exp = exp
+        #self.skills = skills
         self.validate()
 
     def validate(self):
@@ -25,7 +24,7 @@ class Vacancy:
         if self.salary == None:
             self.salary = 0
         if self.citi == None:
-            self.siti = 'Не указано'
+            self.citi = 'Не указано'
 
 
 
@@ -43,15 +42,30 @@ class Vacancy:
             salary = (vac.get('salary').get('from')) if vac['salary'] != None else vac.get('salary')
             citi = vac.get('area').get('name')
             exp = vac.get('experience').get('name') if vac['experience'] != None else vac.get('experience')
+            #skills = vac.get('key_skills').get('name') if vac['key_skills'] != list else vac.get('key_skills')
             instance = cls(name, url, salary, citi, exp)
             instances.append(instance)
             #cls.instances = instances
         return instances
 
+    def __lt__(self, other):
+        return self.salary < other.salary
 
 
     def __str__(self):
         return f"{self.name}, {self.url}, {self.salary}, {self.citi}, {self.exp}"
 
+    def __repr__(self):
+        return f"{self.name}, {self.url}, {self.salary}, {self.citi}, {self.exp}"
+
+
+
+# v1 = Vacancy('1', '1', 10, '1', '1')
+# v2 = Vacancy('1', '1', 20, '1', '1')
+# v3 = Vacancy('1', '1', 5, '1', '1')
+#
+# vacancies = [v1, v2, v3]
+# result = sorted(vacancies)
+# print(result)
 
 
