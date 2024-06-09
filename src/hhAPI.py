@@ -1,4 +1,4 @@
-
+import config
 import requests
 import json
 from abc import ABC, abstractmethod
@@ -23,9 +23,9 @@ class HH(Parser):
     """
 
     def __init__(self):
-        self.url = 'https://api.hh.ru/vacancies'
-        self.headers = {'User-Agent': 'HH-User-Agent'}
-        self.params = {'text': '', 'page': 0, 'per_page': 100}
+        self.url = config.HH_API_URL
+        self.headers = config.HH_USER_AGENT
+        self.params = config.DEFAULT_PARAMS
         self.vacancies = []
 
 
@@ -33,7 +33,7 @@ class HH(Parser):
         """Получает слово, по которому будет производится поиск по ссылке, и количество выводимых вакансий.
         циклично ищет данные по ключевому слову и добвляет их в словарь Vacancies"""
         self.params['text'] = keyword
-        while self.params.get('page') != 20:
+        while self.params.get('page') != config.MAX_PAGES:
             response = requests.get(self.url, headers=self.headers, params=self.params)
             vacancies = response.json()['items']
             self.vacancies.extend(Vacancy.new_vacancy(vacancies)) # Формирует список словарей с вакансиями, используя метод класса Vacancy
