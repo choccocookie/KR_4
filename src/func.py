@@ -37,7 +37,7 @@ def print_menu():
           "2 - выборка по городам\n"
           "3 - вывод всех вакансий\n"
           "4 - топ N вакансий по зарплате\n"
-          "5 - редактор файла\n"
+          "5 - Загрузить из файла\n"
           "0 - выход")
 
 
@@ -49,8 +49,9 @@ def save_choice_vacancies(choice_vacancies):
     """
     save = int(input('1 - сохранить запрос в файл\n2 - вернутся в меню\n'))
     if save == 1:
-        name_file = input('Введите название файла:\n')
-        save_file = JSONsaver(name_file + '.json')
+        choice_vacancies = [vac.__dict__ for vac in choice_vacancies]
+        filename = input('Введите название файла:\n')
+        save_file = JSONsaver(filename + '.json')
         save_file.save_vacancies(choice_vacancies)
         print('Файл сохранен')
     else:

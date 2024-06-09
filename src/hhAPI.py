@@ -8,8 +8,7 @@ class Parser(ABC):
     """
     Абстрактный класс для работы с API
     """
-    #def __init__(self):
-        #self.file_worker = file_worker
+
 
     @abstractmethod
     def load_vacancies(self, keyword):
@@ -28,7 +27,7 @@ class HH(Parser):
         self.headers = {'User-Agent': 'HH-User-Agent'}
         self.params = {'text': '', 'page': 0, 'per_page': 100}
         self.vacancies = []
-        #super().__init__(file_worker)
+
 
     def load_vacancies(self, keyword):
         """Получает слово, по которому будет производится поиск по ссылке, и количество выводимых вакансий.
@@ -52,11 +51,13 @@ class HH(Parser):
 
 
 
-# file_worker = None  # Инициализация file_worker, в зависимости от вашей реализации
-# hh_parser = HH(file_worker)
+
+# hh_parser = HH()
 # hh_parser.load_vacancies("python")
 # hh_parser.print_vacancies()
-
-#search_text = 'Python developer'
-#hh_parser.load_vacancies(search_text)
-#hh_parser.save_vacancies('vacancies.json')
+#
+# search_text = 'Python developer'
+# hh_parser.load_vacancies(search_text)
+# print(hh_parser.vacancies)
+# a = [vac.__dict__ for vac in hh_parser.vacancies]
+# print(a)

@@ -58,6 +58,15 @@ class Vacancy:
     def __repr__(self):
         return f"{self.name}, {self.url}, {self.salary}, {self.citi}, {self.exp}"
 
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'url': self.url,
+            'salary': self.salary,
+            'citi': self.citi,
+            'experience': self.exp
+        }
+
 
 
 # v1 = Vacancy('1', '1', 10, '1', '1')

@@ -66,7 +66,7 @@ class JSONsaver(Saver):
         """
         Возвращает список вакансий в соответствии с заданными критериями
         """
-        criteria = {'city': criteria.tittle()}
+        criteria = {'citi': criteria.title()}
         vacancies = self.read_from_file()
         new_vacancies = [vac for vac in vacancies if self.criteria_check(vac, criteria)]
         return new_vacancies
@@ -87,9 +87,12 @@ class JSONsaver(Saver):
         self.save_vacancies(new_vacancies)
 
 
-# s1 = JSONsaver('vacs.json')
-# v1 = Vacancy("Python Developer", "https://example.com", 100000, "Москва", "2-3 года")
-# s1.delete_from_file(v1)
+
+
+# s1 = JSONsaver('vacs3.json')
+# #v1 = Vacancy("Python Developer", "https://example.com", 100000, "Москва", "2-3 года")
+# a = s1.read_from_file()
+# print(a)
 
 
 
