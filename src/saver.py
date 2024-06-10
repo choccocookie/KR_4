@@ -1,7 +1,7 @@
 import requests
 import json
 from abc import ABC, abstractmethod
-from Vacanсy import Vacancy
+from vacanсy import Vacancy
 from pathlib import Path
 
 class Saver(ABC):

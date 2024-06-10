@@ -2,7 +2,7 @@ import config
 import requests
 import json
 from abc import ABC, abstractmethod
-from Vacanсy import Vacancy
+from vacanсy import Vacancy
 
 class Parser(ABC):
     """

@@ -1,7 +1,12 @@
-from Saver import JSONsaver
+from saver import JSONsaver
 
 def get_area_filter(vacancies, filter_words):
-    "Возвращает список, фильтрованный по городам"
+    """
+    Фильтрует список вакансий по указанным городам.
+    Принимает список вакансий и строку с названиями городов,
+    разделенными пробелами. Возвращает список вакансий, которые находятся
+    в указанных городах.
+    """
     filter_words_list = filter_words.split()
     filtered_area = []
     for vacancy in vacancies:
