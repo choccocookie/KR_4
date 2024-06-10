@@ -1,7 +1,7 @@
-from hhAPI import HH
-from Vacanсy import Vacancy
+from hhapi import HH
+from vacanсy import Vacancy
 from func import filter_by_salary, get_area_filter, one_object_str, print_menu, save_choice_vacancies
-from Saver import JSONsaver
+from saver import JSONsaver
 
 def main():
     print("Введите искомую вакансию:")
@@ -16,13 +16,13 @@ def main():
             min_salary = int(input('Введите минимальный порог заработной платы:\n'))
             choice_vacancies = one_object_str(filter_by_salary(vacancies, min_salary)) # Список вакансий с фильтрами
             print(choice_vacancies)
-            save_choice_vacancies(choice_vacancies)
+            save_choice_vacancies(filter_by_salary(vacancies, min_salary))
 
         elif choice == 2: # выборка по городу
             citi = input('Введите город:\n').title()
             choice_vacancies = one_object_str(get_area_filter(vacancies, citi))
             print(choice_vacancies)
-            save_choice_vacancies(choice_vacancies)
+            save_choice_vacancies(get_area_filter(vacancies, citi))
 
         elif choice == 3: # вывод всех вакансий
             choice_vacancies = sorted(vacancies, reverse=True)
@@ -33,7 +33,7 @@ def main():
             top_n = int(input("Введите количество вакансий для вывода в топ N:\n"))
             choice_vacancies = one_object_str(sorted(vacancies, reverse=True)[:top_n])
             print(choice_vacancies)
-            save_choice_vacancies(choice_vacancies)
+            save_choice_vacancies(sorted(vacancies, reverse=True)[:top_n])
 
         elif choice == 5: # Загрузить из файла
             user_file_name = input('Введите наименование файла c форматом:\n')
